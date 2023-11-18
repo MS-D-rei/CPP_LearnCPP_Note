@@ -1,4 +1,9 @@
-// 1) We really should have a header guard here, but will omit it for simplicity (we'll cover header guards in the next lesson)
+// Header file for add.cpp
 
-// 2) This is the content of the .h file, which is where the declarations go
-int add(int x, int y); // function prototype for add.h -- don't forget the semicolon!
+// Header Guards
+#ifndef ADD_H // these two lines are the header guard
+#define ADD_H // they prevent the header from being included more than once
+
+int add(int x, int y);
+
+#endif // and this is the end of the header guard
