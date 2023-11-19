@@ -1,3 +1,7 @@
+## Fundamental data type sizes
+
+Perhaps surprisingly, the C++ standard does not define the exact size of any of the fundamental types. Instead, it only defines a minimum size (in bits) for the integral and char types, and leaves the actual size of all types to be implementation-defined! The C++ standard also does not assume that a byte is 8 bits.
+
 ## Fundamental data type performance
 
 On modern machines, objects of the fundamental data types are fast, so performance while using or copying these types should generally not be a concern.
