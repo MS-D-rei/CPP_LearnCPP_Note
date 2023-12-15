@@ -1,4 +1,5 @@
 #include <iostream>
+#include "pi.h"
 
 // why functions are good?
 // 1. they allow us to reuse code
@@ -37,6 +38,11 @@ int main() {
     // Inline functions helps compiler to optimize the code
     // std::cout << "min(5, 6): " << 5 << '\n';
     // std::cout << "min(3, 2): " << 2 << '\n';
+
+    // Inline functions
+    std::cout << "pi: " << pi_func() << '\n';
+    // Inline variables
+    std::cout << "pi: " << pi << '\n';
 
     return 0;
 }
