@@ -21,6 +21,8 @@ constexpr std::int64_t powint(std::int64_t base, int exp) {
     std::int64_t result{1};
     while (exp > 0) {
         // if exp is odd number, multiply base to result.
+        // bitwise AND operator
+        // a & b, if both 1 => return 1. otherwise, return 0.
         if (exp & 1) {
             result *= base;
         }
