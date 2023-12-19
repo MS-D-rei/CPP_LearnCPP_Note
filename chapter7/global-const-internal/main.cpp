@@ -12,6 +12,10 @@
 // 2. If the constants are large in size and can’t be optimized away, this can
 // use a lot of memory.
 
+// => refer to global const external
+
+// As a conclusion, prefer global const INTERNAL variable.
+
 int main() {
     std::cout << "Enter a radius: ";
     double radius{};
