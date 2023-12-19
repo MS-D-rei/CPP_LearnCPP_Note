@@ -14,7 +14,8 @@
 
 // => refer to global const external
 
-// As a conclusion, prefer global const INTERNAL variable.
+// As a conclusion, prefer global const INTERNAL variable than EXTERNAL.
+// global const inline variable is the best.(C++17 and above)
 
 int main() {
     std::cout << "Enter a radius: ";
