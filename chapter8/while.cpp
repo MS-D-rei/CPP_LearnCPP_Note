@@ -40,5 +40,23 @@ int main() {
         --outer2;
     }
 
+    int outer3{1};
+    while (outer3 <= 5) {
+        int inner{5};
+
+        while (inner >= 1) {
+            if (inner > outer3) {
+                std::cout << "  ";
+            } else {
+                std::cout << inner << ' ';
+            }
+
+            --inner;
+        }
+
+        std::cout << "\n";
+        ++outer3;
+    }
+
     return 0;
 }
