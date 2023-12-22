@@ -19,6 +19,15 @@ double getDouble() {
         std::cin >> value;
 
         if (std::cin.fail()) {
+
+            // On Unix systems, if the user enters Ctrl+D,
+            // end-of-file(EOF) character will be generated.
+            // and it closes the input stream.
+            // std::cin.clear() can't fix this.
+            if (std::cin.eof()) {
+                exit(0);
+            }
+
             // 3. input extraction failed.
             // example: input 'a'.
             std::cin.clear();  // reset any error flags.
