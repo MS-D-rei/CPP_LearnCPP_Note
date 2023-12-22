@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include <limits>
 
@@ -18,8 +19,9 @@ double getDouble() {
         double value{};
         std::cin >> value;
 
+        // 3. input extraction failed.
+        // example: input 'a'.
         if (std::cin.fail()) {
-
             // On Unix systems, if the user enters Ctrl+D,
             // end-of-file(EOF) character will be generated.
             // and it closes the input stream.
@@ -28,16 +30,17 @@ double getDouble() {
                 exit(0);
             }
 
-            // 3. input extraction failed.
-            // example: input 'a'.
             std::cin.clear();  // reset any error flags.
-            ignoreLine();      // ignore any characters in the input buffer.
+            ignoreLine();      // ignore any inputs in the input buffer.
+
+            std::cout << "Oops, that input is invalid. Please try again.\n";
         } else {
             // 2. input extraction succeeded,
             // but the user enters more input than expected.
-            // for example, if enter 5*7, the *7 will be left in the input buffer.
-            // => use std::cin.ignore() to discard the remaining characters in the input
+            // for example, if enter 5*7, the *7 will be left in the input
             // buffer.
+            // => use std::cin.ignore() to discard the remaining characters in
+            // the input buffer.
             ignoreLine();
             return value;
         }
@@ -54,6 +57,19 @@ char getOperator() {
         std::cout << "Enter one of the following: +, -, *, or /: ";
         char operation{};
         std::cin >> operation;
+
+        // 3. input extraction failed.
+        if (std::cin.fail()) {
+            if (std::cin.eof()) {
+                exit(0);
+            }
+
+            std::cin.clear();  // go back to normal mode.
+        }
+
+        // 2. input extraction succeeded, but the user enters more input than
+        // expected.
+        ignoreLine();  // ignore any inputs in the input buffer.
 
         // 1. input extraction succeeded, but the input value is not expected.
         switch (operation) {
