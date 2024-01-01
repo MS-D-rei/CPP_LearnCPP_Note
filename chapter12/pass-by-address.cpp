@@ -18,6 +18,10 @@ void printByPointer(const T* ptr) {
     std::cout << "printByPointer: " << *ptr << '\n';
 }
 
+void nullifyPtr(int* ptr) { ptr = nullptr; }
+
+void nullifyPtrRef(int*& ptr) { ptr = nullptr; }
+
 int main() {
     std::string str{"Hello, World!"};
     printByValue(str);      // make a copy
@@ -28,6 +32,13 @@ int main() {
     printByValue(x);      // make a copy
     printByReference(x);  // no copy
     printByPointer(&x);   // no copy
+
+    int y{7};
+    int* ptr{&y};
+    nullifyPtr(ptr);
+    std::cout << "ptr = " << ptr << '\n';  // still points to y.
+    nullifyPtrRef(ptr);
+    std::cout << "ptr = " << ptr << '\n';  // now points to nullptr.
 
     return 0;
 }
