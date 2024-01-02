@@ -11,9 +11,6 @@ const std::string& getName() {
     return name;
 }
 
-// It is okay to return by const reference with an rvalue passed by const
-// reference.
-
 // rvalue is passed by const reference.
 // return by const reference.
 const std::string& foo(const std::string& str) { return str; }
@@ -24,6 +21,8 @@ std::string getHello() { return std::string{"Hello"}; }
 int main() {
     std::cout << "name = " << getName() << '\n';
 
+    // It is okay to return by const reference with an rvalue passed by const
+    // reference.
     const std::string str{foo(getHello())};
     std::cout << "str = " << str << '\n';
 
