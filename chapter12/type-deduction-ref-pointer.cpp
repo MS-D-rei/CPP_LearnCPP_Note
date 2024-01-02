@@ -36,5 +36,23 @@ int main() {
     std::cout << "ref4 = " << ref4 << '\n';
     std::cout << "ref4 type = " << typeid(ref4).name() << '\n';
 
+    // auto for pointer.
+
+    std::string str{"Hello"};
+    const std::string* const ptr{&str};
+
+    auto ptr1{ptr};   // const std::string*.
+    auto* ptr2{ptr};  // const std::string*.
+
+    auto const ptr3{ptr};  // const std::string* const.
+    const auto ptr4{ptr};  // const std::string* const.
+
+    auto* const ptr5{ptr};  // const std::string* const.
+    const auto* ptr6{ptr};  // const std::string*.
+
+    const auto const ptr7{ptr};   // Warning: duplicate 'const' declaration
+                                  // specifier [-Wduplicate-decl-specifier]
+    const auto* const ptr8{ptr};  // const std::string* const.
+
     return 0;
 }
