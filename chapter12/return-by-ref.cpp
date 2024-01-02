@@ -1,7 +1,13 @@
 #include <iostream>
 #include <string>
 
-// Pass by reference when you can, pass by address when you must
+// Return by reference returns a reference
+// that is bound to the object that is returned.
+// This avoids making a copy of the object.
+
+// Prefer return by ref over return by address.
+// Because return by ref is safer.
+// Return by address has to take care of nullptr before dereferencing.
 
 // Return by reference.
 // needs the variable to outlive the function.
