@@ -1,5 +1,8 @@
 #include <iostream>
 
+// Favor scoped enumerations over unscoped enumerations unless there’s a
+// compelling reason to do otherwise.
+
 namespace Color {
 enum nonscopedColor { red, yellow, green };
 }  // namespace Color.
@@ -39,11 +42,18 @@ int main() {
     // Error:
     // Invalid operands to binary expression ('Color::scopedColor' and
     // 'Fruit::scopedFruit') [typecheck_invalid_operands].
-    if (sColor == sFruit) {
-        std::cout << "sColor and sFruit are not comparable" << '\n';
-    } else {
-        std::cout << "sColor and sFruit are not comparable" << '\n';
-    }
+    // if (sColor == sFruit) {
+    //     std::cout << "sColor and sFruit are not comparable" << '\n';
+    // } else {
+    //     std::cout << "sColor and sFruit are not comparable" << '\n';
+    // }
+
+    std::cout << "Pick a color (0: red, 1: yellow, 2: green): ";
+    int inputColor{};
+    std::cin >> inputColor;
+
+    scopedColor sInputColor{static_cast<scopedColor>(inputColor)};
+    std::cout << "sInputColor: " << static_cast<int>(sInputColor) << '\n';
 
     return 0;
 }
