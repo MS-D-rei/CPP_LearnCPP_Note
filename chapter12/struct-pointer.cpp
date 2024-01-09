@@ -13,7 +13,7 @@ struct Employee {
 };
 
 int main() {
-    Employee joe{14, 32, 24.15, {20, 40}};
+    Employee joe{.id = 14, .age = 32, .wage = 24.15, .department = {20, 40}};
 
     Employee* joePtr{&joe};
     std::cout << "Joe age: " << (*joePtr).age << '\n';  // 32
