@@ -36,7 +36,8 @@ int main() {
     int y{7};
     int* ptr{&y};
     nullifyPtr(ptr);
-    std::cout << "ptr = " << ptr << '\n';  // still points to y.
+    std::cout << "ptr = " << ptr
+              << '\n';  // still points to y. because received a copy of ptr.
     nullifyPtrRef(ptr);
     std::cout << "ptr = " << ptr << '\n';  // now points to nullptr.
 
