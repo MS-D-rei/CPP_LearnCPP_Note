@@ -9,12 +9,17 @@ void printByValue(T value) {
 }
 
 template <typename T>
-void printByReference(const T& ref) {
+void printByReference(T& ref) {
     std::cout << "printByReference: " << ref << '\n';
 }
 
 template <typename T>
-void printByPointer(const T* ptr) {
+void printByConstReference(const T& ref) {
+    std::cout << "printByReference: " << ref << '\n';
+}
+
+template <typename T>
+void printByConstPointer(const T* ptr) {
     std::cout << "printByPointer: " << *ptr << '\n';
 }
 
@@ -24,14 +29,14 @@ void nullifyPtrRef(int*& ptr) { ptr = nullptr; }
 
 int main() {
     std::string str{"Hello, World!"};
-    printByValue(str);      // make a copy
-    printByReference(str);  // no copy
-    printByPointer(&str);   // no copy
+    printByValue(str);           // make a copy
+    printByConstReference(str);  // no copy
+    printByConstPointer(&str);   // no copy
 
     const int x{5};
-    printByValue(x);      // make a copy
-    printByReference(x);  // no copy
-    printByPointer(&x);   // no copy
+    printByValue(x);           // make a copy
+    printByConstReference(x);  // no copy
+    printByConstPointer(&x);   // no copy
 
     int y{7};
     int* ptr{&y};
@@ -40,6 +45,10 @@ int main() {
               << '\n';  // still points to y. because received a copy of ptr.
     nullifyPtrRef(ptr);
     std::cout << "ptr = " << ptr << '\n';  // now points to nullptr.
+
+    // printByReference(5);  // error: cannot bind non-const lvalue reference of
+    //                       // type ‘int&’ to an rvalue of type ‘int’
+    printByConstReference(5);  // ok
 
     return 0;
 }
