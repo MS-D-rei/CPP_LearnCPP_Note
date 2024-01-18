@@ -2,28 +2,37 @@
 #include <string>
 #include <string_view>
 
-class Employee {
+// Prefer non-member functions to member functions.
+// 1. it makes the class interface smaller and easier to understand.
+// 2. it must work through the public interface of the class. no direct access
+// to private members.
+// 3. it don't need to be considered when changing the implementation of the
+// class.
+
+class Yogurt {
    private:
-    std::string m_name{};
-    char m_firstInitial{};
+    std::string m_flavor{"vanilla"};
 
    public:
-    void setName(std::string_view name) {
-        m_name = name;
-        m_firstInitial = name.front();
-    }
+    void setFlavor(std::string_view flavor) { m_flavor = flavor; }
 
-    void printName() { std::cout << "Employee: " << m_name << '\n'; }
+    std::string_view getFlavor() const { return m_flavor; }
 
-    void printFirstInitial() {
-        std::cout << "First initial: " << m_firstInitial << '\n';
-    }
+    // worst case: member function uses direct access to private members.
+    // void print() const { std::cout << "Yogurt(" << m_flavor << ")\n"; }
+
+    // not great case: member function uses public interface.
+    // void print() const { std::cout << "Yogurt(" << getFlavor() << ")\n"; }
 };
 
+// best case: non-member function uses public interface.
+void printYogurt(const Yogurt& yogurt) {
+    std::cout << "Yogurt(" << yogurt.getFlavor() << ")\n";
+}
+
 int main() {
-    Employee employee{};
-    employee.setName("John Doe");
-    employee.printName();
-    employee.printFirstInitial();
+    Yogurt yogurt{};
+    yogurt.setFlavor("strawberry");
+    printYogurt(yogurt);
     return 0;
 }
