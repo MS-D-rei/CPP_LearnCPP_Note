@@ -8,7 +8,7 @@
 // order to ensure they are used properly, and it needs to be able to calculate
 // how large objects of that type are in order to instantiate them.
 
-// multi line member function => 
+// multi line member function =>
 // put the function declaration in the header file.
 // put the function definition in the source file.
 // single line member function =>
