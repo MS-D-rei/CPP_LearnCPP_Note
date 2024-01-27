@@ -2,24 +2,12 @@
 #include <vector>
 
 namespace Students {
-enum Names {
-    kenny,
-    kyle,
-    stan,
-    cartman,
-    max_students
-};
+enum Names { kenny, kyle, stan, cartman, max_students };
 }
 
 // scoped enum cannot be used as array index.
 // Because scoped enum has no implicit conversion to integral type.
-enum class Students2 {
-    kenny,
-    kyle,
-    stan,
-    cartman,
-    max_students
-};
+enum class Students2 { kenny, kyle, stan, cartman, max_students };
 
 int main() {
     // Create an array to store the number of students in each class.
