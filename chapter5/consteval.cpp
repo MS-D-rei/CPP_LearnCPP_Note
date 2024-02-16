@@ -37,8 +37,10 @@ constexpr int greater2(int a, int b) {
 consteval int greater3(int a, int b) { return (a > b ? a : b); }
 
 // helper function to force compile time evaluation
-consteval auto compileTime(auto value) {
-    return value;
+// consteval function requires a constexpr as its argument.
+// so the constexpr function will be evaluated at compile time.
+consteval auto compileTimeEvaluate(auto constantExpressionValue) {
+    return constantExpressionValue;
 }
 
 int main() {
@@ -46,17 +48,23 @@ int main() {
     constexpr int g{greater(5, 6)};
     std::cout << g << '\n';
 
-    int x{5};  // not constexpr variable.
     // case2: evaluated at run time.
+    int x{19};  // not constexpr variable.
     std::cout << greater(x, 6) << '\n';
 
     // case3: may be evaluated at compile time or run time.
-    std::cout << greater(5, 6) << '\n';
 
-    std::cout << greater2(6, 7) << '\n';
+    // this will be evaluated at run time.
+    std::cout << greater2(30, 31) << '\n'; // 0
 
-    std::cout << greater3(7, 8) << '\n';
+    // this will be evaluated at compile time.
+    constexpr int y{greater2(30, 31)};
 
-    // will be evaluated at compile time.
-    std::cout << compileTime( greater3(8, 9) ) << '\n';
+    std::cout << y << '\n'; // 31
+
+    // consteval function is evaluated at compile time.
+    std::cout << greater3(40, 48) << '\n';
+
+    // with helper function
+    std::cout << compileTimeEvaluate( greater(8, 9) ) << '\n';
 }
