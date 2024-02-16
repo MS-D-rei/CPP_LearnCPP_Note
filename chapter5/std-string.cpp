@@ -2,7 +2,7 @@
 #include <string>
 
 // std::literals::string_literals
-using namespace std::string_literals; // for "s" suffix
+using namespace std::string_literals;  // for "s" suffix
 
 int main() {
     std::string name{"Alex"};

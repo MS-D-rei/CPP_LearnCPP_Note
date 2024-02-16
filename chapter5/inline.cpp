@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "pi.h"
 
 // why functions are good?
@@ -8,18 +9,19 @@
 // 4. they allow us to test our code in isolation
 // 5. they allow us to change the implementation without changing the interface
 
-// However one downside is that they can be slow. This is because the compiler 
+// However one downside is that they can be slow. This is because the compiler
 // has to jump to the function, execute it, and then jump back to where it was
 // in the code. This is called a function call overhead.
 // For small function like min() below, the overhead is greater than the time
 // it takes to execute the function itself. This is where inline functions come
-// in. 
+// in.
 // Inline functions are functions that are expanded in place, rather than
 // being called. This eliminates the function call overhead.
 
 // Benefits of inline functions vs the size of the function
 // Inline functions makes the function body larger,
-// which can cause the program to run slower due to not fitting in memory caches.
+// which can cause the program to run slower due to not fitting in memory
+// caches.
 
 // So do we consider whether use inline or not?
 // No. Modern compilers are smart enough to decide whether to inline or not.

@@ -18,11 +18,11 @@
 // the compiler must be able to see the definition of the function
 // at the point where it is called.
 // Best practice:
-// Constexpr/consteval functions used in a single source file (.cpp) 
+// Constexpr/consteval functions used in a single source file (.cpp)
 // can be defined in the source file above where they are used.
-// Constexpr/consteval functions used in multiple source files 
-// should be defined in a header file so they can be included into each source file.
-
+// Constexpr/consteval functions used in multiple source files
+// should be defined in a header file so they can be included into each source
+// file.
 
 constexpr int greater(int a, int b) { return (a > b ? a : b); }
 
@@ -55,16 +55,16 @@ int main() {
     // case3: may be evaluated at compile time or run time.
 
     // this will be evaluated at run time.
-    std::cout << greater2(30, 31) << '\n'; // 0
+    std::cout << greater2(30, 31) << '\n';  // 0
 
     // this will be evaluated at compile time.
     constexpr int y{greater2(30, 31)};
 
-    std::cout << y << '\n'; // 31
+    std::cout << y << '\n';  // 31
 
     // consteval function is evaluated at compile time.
     std::cout << greater3(40, 48) << '\n';
 
     // with helper function
-    std::cout << compileTimeEvaluate( greater(8, 9) ) << '\n';
+    std::cout << compileTimeEvaluate(greater(8, 9)) << '\n';
 }
