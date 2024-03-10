@@ -22,6 +22,18 @@ class Employee {
     }
 };
 
+class Employee2 {
+   private:
+    std::string m_name{};
+    int m_id{};
+
+   public:
+    // Reducing constructor using default parameters.
+    Employee2(std::string_view name, int id = 0) : m_name(name), m_id(id) {
+        std::cout << "Employee " << m_name << " created.\n";
+    }
+};
+
 int main() {
     Employee alex{"Alex"};
     Employee joe{"Joe", 42};
