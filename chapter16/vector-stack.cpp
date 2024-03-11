@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
 
+// Best Practices:
+// - Prefer emplace_back() when creating a new temporary object to add to the
+// container, or when you need to access an explicit constructor.
+// - Prefer push_back() otherwise.
+
 template <typename T>
 void printStack(const std::vector<T>& stack) {
     if (stack.empty()) {
@@ -12,8 +17,8 @@ void printStack(const std::vector<T>& stack) {
     }
     std::cout << '\n';
 
-    std::cout << "size: " << stack.size() << '\n';
-    std::cout << "capacity: " << stack.capacity() << '\n';
+    std::cout << "Length: " << stack.size() << '\n';
+    std::cout << "Capacity: " << stack.capacity() << '\n';
     std::cout << '\n';
 }
 
@@ -22,8 +27,8 @@ int main() {
     printStack(stack);
 
     // reserve() changes the capacity of the vector.
-    // It does not change the size of the vector.
-    // resize() changes the size of the vector.
+    // It does not change the length of the vector.
+    // resize() changes the length of the vector.
     stack.reserve(6);
     printStack(stack);
 
