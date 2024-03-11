@@ -15,7 +15,8 @@ T calculateAverage(const std::vector<T>& vec) {
     // From C++20, we can use std::ssize(vec) to get signed size.
     //
     // 2. Using unsigned type for index.
-    // for (typename std::vector<T>::size_type index{0}; index < vec.size(); ++index) {
+    // for (typename std::vector<T>::size_type index{0}; index < vec.size();
+    // ++index) {
     //     sum += vec[index];
     // }
     // 3. Using signed type for index. (int)
