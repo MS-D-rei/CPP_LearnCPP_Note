@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 
+// Best practice:
+// 1. Favor range-based for loops over regular for loops when traversing containers.
+// 2. Use `const auto&` to type deduction and avoid copying elements. 
+
 template <typename T>
 void printEachElement(const std::vector<T>& vec) {
     // to avoid expensive copying to the element,
