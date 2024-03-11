@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
 
+// Vector Length and Capacity
+// - Length: the number of elements in the vector.
+// - Capacity: the number of elements that the vector can hold without
+// reallocation.
+
 // Vector resize
 // Resizing makes vector special.
 // However, when it changes the capacity, it is called reallocation.
@@ -20,29 +25,29 @@ void printVectorElement(const std::vector<T>& vector) {
 }
 
 template <typename T>
-void printVectorCapacity(const std::vector<T>& vector) {
-    std::cout << "size: " << vector.size() << '\n';
-    std::cout << "capacity: " << vector.capacity() << '\n';
+void printVectorLengthAndCapacity(const std::vector<T>& vector) {
+    std::cout << "Length: " << vector.size() << '\n';
+    std::cout << "Capacity: " << vector.capacity() << '\n';
 }
 
 int main() {
     std::vector<int> vector1{0, 1, 2};
-    printVectorCapacity(vector1);
+    printVectorLengthAndCapacity(vector1);
     printVectorElement(vector1);
     std::cout << '\n';
 
-    vector1.resize(5);
-    printVectorCapacity(vector1);
+    vector1.resize(5);  // change the length to 5
+    printVectorLengthAndCapacity(vector1);
     printVectorElement(vector1);
     std::cout << '\n';
 
-    vector1.resize(2);
-    printVectorCapacity(vector1);
+    vector1.resize(2);  // change the length to 2
+    printVectorLengthAndCapacity(vector1);
     printVectorElement(vector1);
     std::cout << '\n';
 
-    vector1.shrink_to_fit();
-    printVectorCapacity(vector1);
+    vector1.shrink_to_fit();  // change the capacity to the length
+    printVectorLengthAndCapacity(vector1);
     printVectorElement(vector1);
     std::cout << '\n';
 
