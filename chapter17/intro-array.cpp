@@ -24,6 +24,7 @@ int main() {
 
     // `std::array` has `size()` member function.
     // it returns constexpr std::size_t.
+    // and it can be converted to int without narrowing.
     constexpr int primesSize = primes.size();
     std::cout << "size: " << primesSize << '\n';
 
