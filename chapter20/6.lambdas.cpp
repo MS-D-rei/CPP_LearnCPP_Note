@@ -23,11 +23,11 @@ int main() {
         std::cout << "Found " << *found << '\n';
     }
 
-    // Abobe code could be improved using lambda
+    // Above code could be improved using lambda
 
     // the code is passing `containsNut` function pointer to `std::find_if`.
     // `containsNut` is short, and called only once.
-    // It is better not to put it in global scope, and name it.
+    // It is better not to put it in global scope, and name it to pollute.
 
     // lambda expression(also called a lambda or closure) allows us to define
     // an anonymous function inside another function.
@@ -54,6 +54,12 @@ int main() {
             return str.find("nut") != std::string_view::npos;
         })};
 
+    if (found2 == array1.end()) {
+        std::cout << "No nuts" << '\n';
+    } else {
+        std::cout << "Found " << *found2 << '\n';
+    }
+
     // But, this lambda is little bit not readable.
     // Can name lambda, and this makes the lambda reusable.
 
@@ -67,10 +73,10 @@ int main() {
     // => compiler will generate a unique type just for the lambda
     // we can't explicitly use.
 
-    if (found2 == array1.end()) {
+    if (found3 == array1.end()) {
         std::cout << "No nuts" << '\n';
     } else {
-        std::cout << "Found " << *found2 << '\n';
+        std::cout << "Found " << *found3 << '\n';
     }
 
     return 0;
